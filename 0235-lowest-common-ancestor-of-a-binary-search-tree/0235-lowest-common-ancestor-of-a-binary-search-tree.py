@@ -13,12 +13,12 @@ class Solution(object):
         :type q: TreeNode
         :rtype: TreeNode
         """
-        left = p if p.val < q.val else q
-        right = p if p.val > q.val else q
+        left = min(p.val, q.val)
+        right = max(p.val, q.val)
         while root:
-            if root.val > right.val: # greater than both
+            if root.val > right: # greater than both
                 root = root.left
-            elif root.val < left.val: # less than both
+            elif root.val < left: # less than both
                 root = root.right
             else:
                 return root
